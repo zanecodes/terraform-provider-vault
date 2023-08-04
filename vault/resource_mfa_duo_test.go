@@ -31,6 +31,7 @@ func TestMFADuoBasic(t *testing.T) {
 					resource.TestCheckResourceAttr(resourceName, "api_hostname", "api-2b5c39f5.duosecurity.com"),
 					resource.TestCheckResourceAttr(resourceName, "username_format", "user@example.com"),
 					resource.TestCheckResourceAttr(resourceName, "push_info", "from=loginortal&domain=example.com"),
+					resource.TestCheckResourceAttr(resourceName, "insecure", "true"),
 				),
 			},
 			testutil.GetImportTestStep(resourceName, false, nil,
@@ -58,6 +59,7 @@ resource "vault_mfa_duo" "test" {
   api_hostname          = "api-2b5c39f5.duosecurity.com"
   username_format       = "user@example.com"
   push_info             = "from=loginortal&domain=example.com"
+  insecure              = true
 }
 `, userPassPath, path)
 }

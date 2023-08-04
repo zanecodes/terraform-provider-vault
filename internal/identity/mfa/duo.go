@@ -49,6 +49,12 @@ var duoSchemaMap = map[string]*schema.Schema{
 		Default:     false,
 		Description: "Require passcode upon MFA validation.",
 	},
+	consts.FieldInsecure: {
+		Type:        schema.TypeBool,
+		Optional:    true,
+		Default:     false,
+		Description: "Skip Duo server TLS certificate verification. This is not recommended for production.",
+	},
 }
 
 // GetDuoSchemaResource returns the resource needed to provision an identity/mfa/duo resource.

@@ -33,6 +33,7 @@ The following arguments are supported:
 * `use_passcode` - (Optional) Require passcode upon MFA validation.
 * `username_format` - (Optional) A template string for mapping Identity names to MFA methods.
 * `uuid` - (Optional) Resource UUID.
+* `insecure` - (Optional) Skip Duo server TLS certificate verification. This is not recommended for production.
 
 ## Attributes Reference
 

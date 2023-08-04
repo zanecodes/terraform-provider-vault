@@ -67,6 +67,11 @@ func mfaDuoResource() *schema.Resource {
 				Optional:    true,
 				Description: "Push information for Duo.",
 			},
+			consts.FieldInsecure: {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Description: "Skip Duo server TLS certificate verification. This is not recommended for production.",
+			},
 		},
 	}
 }
@@ -149,6 +154,10 @@ func mfaDuoRead(_ context.Context, d *schema.ResourceData, meta interface{}) dia
 		return diag.FromErr(err)
 	}
 
+	if err := d.Set(consts.FieldInsecure, resp.Data["insecure"]); err != nil {
+		return diag.FromErr(err)
+	}
+
 	d.SetId(name)
 
 	return nil
@@ -177,6 +186,10 @@ func mfaDuoUpdateFields(d *schema.ResourceData, data map[string]interface{}) {
 
 	if v, ok := d.GetOk(consts.FieldPushInfo); ok {
 		data[consts.FieldPushInfo] = v.(string)
+	}
+
+	if v, ok := d.GetOk(consts.FieldInsecure); ok {
+		data[consts.FieldInsecure] = v.(bool)
 	}
 }
 

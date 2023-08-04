@@ -165,6 +165,7 @@ const (
 	FieldAPIHostname                   = "api_hostname"
 	FieldPushInfo                      = "push_info"
 	FieldUsePasscode                   = "use_passcode"
+	FieldInsecure                      = "insecure"
 	FieldIssuer                        = "issuer"
 	FieldPeriod                        = "period"
 	FieldKeySize                       = "key_size"
